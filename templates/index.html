@@ -7,29 +7,56 @@
   </head>
   <body class="p-4">
     <h1 class="mb-3">Bienvenue sur Flask</h1>
-    <p>Ceci est un site de démonstration simple.</p>
+    <p>Ce site montre l'utilisation de quelques bibliothèques Python.</p>
 
-    <div class="mb-3">
-      <button class="btn btn-primary me-2">Bouton 1</button>
-      <button class="btn btn-success me-2">Bouton 2</button>
-      <button class="btn btn-danger">Bouton 3</button>
-    </div>
+    <h2 class="mt-4">Météo</h2>
+    <form method="post" action="/weather" class="mb-3">
+      <div class="input-group">
+        <input type="text" name="city" class="form-control" placeholder="Ville" required>
+        <button class="btn btn-primary">Voir la météo</button>
+      </div>
+    </form>
+    {% if weather %}
+      {% if weather.error %}
+        <div class="alert alert-danger">{{ weather.error }}</div>
+      {% else %}
+        <div class="alert alert-info">
+          {{ weather.description }} - {{ weather.temperature }}°C, humidité {{ weather.humidity }}%
+        </div>
+      {% endif %}
+    {% endif %}
 
-    <ul class="mb-3">
-      <li>Élément 1</li>
-      <li>Élément 2</li>
-      <li>Élément 3</li>
-    </ul>
+    <h2 class="mt-4">Calculs</h2>
+    <form method="post" action="/add" class="mb-2">
+      <div class="input-group">
+        <input type="number" step="any" name="a" class="form-control" placeholder="Nombre 1" required>
+        <input type="number" step="any" name="b" class="form-control" placeholder="Nombre 2" required>
+        <button class="btn btn-success">Addition</button>
+      </div>
+    </form>
+    {% if add_result is not none %}
+      <div class="alert alert-secondary">Résultat addition : {{ add_result }}</div>
+    {% endif %}
 
-    <table class="table table-striped">
-      <thead>
-        <tr><th>Nom</th><th>Valeur</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Alpha</td><td>1</td></tr>
-        <tr><td>Bêta</td><td>2</td></tr>
-        <tr><td>Gamma</td><td>3</td></tr>
-      </tbody>
-    </table>
+    <form method="post" action="/multiply" class="mb-2">
+      <div class="input-group">
+        <input type="number" step="any" name="a" class="form-control" placeholder="Nombre 1" required>
+        <input type="number" step="any" name="b" class="form-control" placeholder="Nombre 2" required>
+        <button class="btn btn-success">Multiplication</button>
+      </div>
+    </form>
+    {% if multiply_result is not none %}
+      <div class="alert alert-secondary">Résultat multiplication : {{ multiply_result }}</div>
+    {% endif %}
+
+    <form method="post" action="/sin">
+      <div class="input-group">
+        <input type="number" step="any" name="x" class="form-control" placeholder="Angle en radians" required>
+        <button class="btn btn-success">sin(x)</button>
+      </div>
+    </form>
+    {% if sin_result is not none %}
+      <div class="alert alert-secondary">sin(x) = {{ sin_result }}</div>
+    {% endif %}
   </body>
 </html>
