@@ -1,6 +1,6 @@
 # WebSiteContainer-Test
 
-Conteneur Docker prêt à déployer un petit site Flask de test.
+Conteneur Docker bien documenté et prêt à déployer un petit site Python Flask de test.
 
 ## Fonctionnalités
 - Consultation de la météo d'une ville en utilisant l'API gratuite [wttr.in](https://wttr.in/).
@@ -8,8 +8,14 @@ Conteneur Docker prêt à déployer un petit site Flask de test.
 
 ## Démarrage
 
-1. Construire et lancer le conteneur :
-   ```bash
+1. Cloner ce dépôt sur votre machine
+   ```
+   git clone https://github.com/ThomLecha/WebSiteContainer-Test.git
+   ```
+   
+2. Construire et lancer le conteneur :
+   ```
+   cd WebSiteContainer-Test
    docker compose up --build
    ```
-2. Ouvrir le site sur [http://localhost:5000](http://localhost:5000).
+3. Ouvrir le site sur [http://localhost:5000](http://localhost:5000).

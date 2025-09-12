@@ -1,7 +1,13 @@
 services:
-  web:
+  # Nom du service (ici "python-flask-test")
+  python-flask-test:
+    # Indique de construire l'image à partir du Dockerfile situé dans le dossier courant (".")
     build: .
     ports:
+      # Mappe le port 5000 de ta machine hôte (à gauche) sur le port 5000 du conteneur (à droite)
       - "5000:5000"
+    # Définit les variables d'environnement dans le conteneur
+    # Ici on fixe la constante et le port utilisé par Flask (même valeur que EXPOSE 5000 dans le Dockerfile)
     environment:
+      - CONSTANT_A=42
       - PORT=5000

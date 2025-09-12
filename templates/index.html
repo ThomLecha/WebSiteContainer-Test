@@ -7,7 +7,7 @@
   </head>
   <body class="p-4">
     <h1 class="mb-3">Bienvenue sur Flask</h1>
-    <p>Ce site montre l'utilisation de quelques bibliothèques Python.</p>
+    <p>Ce site montre l'utilisation de quelques bibliothèques Python. <br> Constante = {{ constant_a }}</p>
 
     <h2 class="mt-4">Météo</h2>
     <form method="post" action="/weather" class="mb-3">
@@ -21,7 +21,7 @@
         <div class="alert alert-danger">{{ weather.error }}</div>
       {% else %}
         <div class="alert alert-info">
-          {{ weather.description }} - {{ weather.temperature }}°C, humidité {{ weather.humidity }}%
+          {{ weather.description }}, {{ weather.temperature }}°C, humidité {{ weather.humidity }}%
         </div>
       {% endif %}
     {% endif %}
